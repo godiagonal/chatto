@@ -1,0 +1,149 @@
+@css {
+  ::-webkit-scrollbar {
+      width: 6px;
+  }
+  ::-webkit-scrollbar:horizontal {
+      height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+      border-radius: 3px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); 
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3); 
+  }
+}
+
+html
+
+body
+  font 11px  Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif
+  margin 0
+  padding 0
+
+header
+  text-align center
+
+footer
+  text-align center
+
+h1
+  font-size 24px
+  margin 0
+
+h2
+  font-size 14px
+  margin 0
+
+h3
+  font-size 12px
+  margin 0
+
+.error
+  border 1px solid red
+
+.css-table
+  width 100%
+  display table
+  .row
+    display table-row
+    .cell
+      //border 1px solid #000
+      display table-cell
+      vertical-align top
+
+#main
+  margin 0 auto
+  //height 70%
+  width 70%
+  text-align left
+  //border 1px solid red
+
+#chat
+  width 70%
+  height 99%
+  min-width 500px
+  min-height 400px
+  position absolute
+  //border 1px solid red
+  #titleCell, #usersTitleCell
+    padding 10px
+    height 80px
+    vertical-align bottom
+
+/* Messages */
+
+#messagesCell
+  overflow hidden
+
+  #messages
+    height 90%
+    margin 10px
+    overflow-y scroll
+
+    #messageList
+      .row
+        .cell
+          padding-right 5px
+          padding-top 5px
+        .cell:nth-child(1)
+          width 55px
+        .cell:nth-child(2)
+          width 80px
+
+/* Online users */
+
+#usersCell
+  width 200px
+  overflow hidden
+
+  #users
+    height 90%
+    margin 10px
+    overflow-y scroll
+
+    #userList
+      list-style none
+      margin 0
+      padding 0
+      padding-right 5px
+      li
+        margin-top 2px
+
+
+#inputRow
+  //position absolute
+  //width 100%
+  
+  height 100px
+  background #ccc//#fafafa
+  border-radius: 3px
+  -webkit-box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.2)
+
+  /* Message input */
+
+  #inputCell
+    //float left
+    //width 50%
+    //border 1px solid green
+
+    #input
+      margin 10px
+
+  /* Alias */
+
+  #aliasCell
+    //float right
+    width 200px
+    //border 1px solid green
+
+    #alias
+      margin 10px
+
+      #showUserName
+        display none
+
+        #lblUserNameError
+          display none
+          color red

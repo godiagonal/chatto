@@ -1,0 +1,37 @@
+extends layout
+
+block head
+
+block main
+  #chat.css-table
+    .row
+      .cell#titleCell
+        h1 Chatto
+      .cell#usersTitleCell
+        h2 Online now
+    .row
+      .cell#messagesCell
+        section#messages
+          #messageList.css-table
+      .cell#usersCell
+        section#users
+          ul#userList
+            each val in [1,2,3,4,5,6,7,8,9,5,6,7,8,9,5,6,7,8,'asdifasdfsdafasdfasdffijasdijf']
+              li
+                = val
+    .row#inputRow
+      .cell#inputCell
+        section#input
+          textarea#txtMessage
+          input#btnSend(type='button', value='send')
+      .cell#aliasCell
+        section#alias
+          h3 My alias
+          #editUserName
+            input#txtUserName
+            input#btnSaveUserName(type='button' value='save')
+            #lblUserNameError This alias is already taken
+          #showUserName
+            span#lblUserName
+            input#btnEditUserName(type='button', value='edit')
+            input#hidUserName(type='hidden')

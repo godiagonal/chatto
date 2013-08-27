@@ -1,0 +1,37 @@
+extends layout
+
+block head
+
+block main
+      
+      section#users
+        .titleBox
+          h2 ONLINE NOW
+        #usersInner
+          ul#userList
+            //each val in [1,2,3,4,5,6,7,8,9,5,6,7,8,9,5,6,7,8,'123456789012345678901234']
+              li
+                = val
+      section#messages
+        .titleBox
+          h1 CHA<span class="altColor">T_T</span>O
+        #messagesInner
+          #messageList.css-table
+      section#inputBar
+        section#alias
+          #aliasInner
+            h2 MY NICKNAME
+            #editUserName
+              input#txtUserName(maxlength='24')
+              input#btnSaveUserName(type='button' value='OK')
+              #lblUserNameError This nickname is already taken
+            #showUserName
+              span#lblUserName
+              input#btnEditUserName(type='button', value='')
+              input#hidUserName(type='hidden')
+        section#input
+          #inputInner
+            #inputButton
+              input#btnSend(type='button', value='SEND')
+            #inputMessage
+              textarea#txtMessage(maxlength='2000')
