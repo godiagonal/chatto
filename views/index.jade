@@ -1,11 +1,9 @@
 extends layout
 
-block head
-
 block main
       
       section#users
-        .titleBox
+        .userTitleBox
           h2 ONLINE NOW
         #usersInner
           ul#userList
@@ -22,16 +20,17 @@ block main
           #aliasInner
             h2 MY NICKNAME
             #editUserName
-              input#txtUserName(maxlength='24')
-              input#btnSaveUserName(type='button' value='OK')
-              #lblUserNameError This nickname is already taken
+              input#txtUserName(maxlength='24' tabindex='4')
+              input#btnSaveUserName(type='button' value='OK' tabindex='5')
             #showUserName
               span#lblUserName
-              input#btnEditUserName(type='button', value='')
+              input#btnEditUserName(type='button' value='' tabindex='3')
               input#hidUserName(type='hidden')
+            #lblUserNameError.errorMessage This nickname is already taken
         section#input
           #inputInner
             #inputButton
-              input#btnSend(type='button', value='SEND')
+              input#btnSend(type='button' value='SEND' tabindex='2')
             #inputMessage
-              textarea#txtMessage(maxlength='2000')
+              textarea#txtMessage(maxlength='2000' tabindex='1')
+            #lblMessageError.errorMessage Please enter a nickname

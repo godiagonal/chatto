@@ -1,4 +1,4 @@
-var socket = io.connect('192.168.0.101:3000');
+var socket = io.connect('http://chatto.jit.su:80'); //http://chatto.jit.su:80 | 192.168.0.101
 var messages = [];
 
 function trim(str) {
@@ -11,15 +11,16 @@ function sendMessage() {
   
   //prevent empty user name and message
   if(userName == '') {
-    alert('Please enter an alias');
+    $('#lblMessageError').show();
     return;
   }
   else if(message.replace(/(\r\n|\n|\r)/gm,'') == '') {
     return;
   }
+  $('#lblMessageError').hide();
 
   //push to server
-  var data = {userName: null, message: message, date: null};
+  var data = {userName: userName, message: message, date: null};
   socket.emit('message', data);
 
   $('#txtMessage').val('');
@@ -30,7 +31,6 @@ function saveUserName(userName) {
 
   //prevent empty user name
   if(userName.length == 0) {
-    $('#txtUserName').addClass('error');
     return;
   }
 
@@ -69,17 +69,19 @@ $(window).load(function(){
   }
 
   //refresh messages
-  socket.on('message', function(data) {
-    messages.push(data);
+  socket.on('message', function(dataArray) {
+    for(i=0;i<dataArray.length;i++) {
+      messages.push(dataArray[i]);
+    }
     var html = '';
     for(i=0;i<messages.length;i++) {
       html += '<div class="row">'
-      html +=   '<div class="cell timestamp">' + moment(messages[i].date).format('HH:MM') + '</div>'
+      html +=   '<div class="cell timestamp">' + moment(messages[i].date).format('HH:mm') + '</div>'
       html +=   '<div class="cell"><span class="userName">' + messages[i].userName + ':</span> ' + messages[i].message.replace(/(\r\n|\n|\r)/gm,'<br>') + '</div>'
       html += '</div>'
     }
     $('#messageList').html(html);
-    $("#messagesInner").scrollTop($("#messages")[0].scrollHeight);
+    $("#messagesInner").scrollTop($("#messagesInner")[0].scrollHeight);
   });
 
   //callback for saveUserName()
@@ -101,7 +103,7 @@ $(window).load(function(){
 
       $('#editUserName').hide();
       $('#lblUserNameError').hide();
-      $('#txtUserName').removeClass('error');
+      $('#lblMessageError').hide();
       $('#showUserName').show();
     }
   });

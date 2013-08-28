@@ -1,4 +1,13 @@
-/* Variables */
+/* Variables and animations */
+@-webkit-keyframes fadeBorder {
+  0% {
+    border-color: #ddd;
+  }
+
+  100% {
+    border-color: #cc715c;
+  }
+}
 /* Scrollbars */
 ::-webkit-scrollbar {
     width: 5px;
@@ -8,22 +17,28 @@
 }
 ::-webkit-scrollbar-track {
     border-radius: 2px;
-    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3); 
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background: #cc715c;
-    //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
 }
 /* Elements */
 html {
   height: 100%;
 }
 body {
-  font: 12px Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
+  font: 12px Helvetica, Arial, sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
+/*background-color transparent
+  background-image url('/images/Bokeh3.jpg')
+  background-size 1680px
+  background-repeat no-repeat
+  background-position center
+  background-attachment fixed*/
 }
 header {
   text-align: center;
@@ -51,14 +66,24 @@ h2 {
 .userName {
   font-weight: bold;
 }
-.titleBox {
+.titleBox,
+.userTitleBox {
   height: 30px;
   vertical-align: bottom;
   text-align: bottom;
   padding: 10px;
 }
+.userTitleBox {
+  padding-left: 20px;
+}
 .error {
   border: 1px solid #f00;
+}
+.errorMessage {
+  display: none;
+  float: left;
+  color: #f00;
+  margin-top: 10px;
 }
 .css-table {
   width: 100%;
@@ -83,7 +108,7 @@ h2 {
 /* Messages */
 #messages {
   height: 100%;
-  min-height: 220px;
+  min-height: 200px;
 }
 #messages #messagesInner {
   height: 92%;
@@ -99,14 +124,15 @@ h2 {
 }
 /* Online users */
 #users {
-  width: 200px;
+  width: 210px;
   height: 100%;
-  min-height: 220px;
+  min-height: 200px;
   float: right;
 }
 #users #usersInner {
   height: 92%;
   margin: 10px;
+  margin-left: 20px;
   overflow-y: auto;
 }
 #users #usersInner #userList {
@@ -127,6 +153,7 @@ h2 {
 /*background #fcfcfc
   border-radius 3px
   border 1px solid #ddd
+  box-shadow inset 0 0 5px 0 rgba(0,0,0,0.1)
   -webkit-box-shadow inset 0 0 5px 0 rgba(0,0,0,0.1)*/
 /* Message input */
 /* Alias */
@@ -145,19 +172,22 @@ h2 {
   float: left;
   height: 40px;
   width: 100%;
+  resize: none;
+  margin: 0;
   padding: 5px;
+  background: #fff;
+  outline: none;
   border-radius: 3px 0 0 3px;
   border: 1px solid #ddd;
   border-right: none;
-  background: #fff;
+  box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.2);
   -webkit-box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.2);
-  resize: none;
-  margin: 0;
-  font-family: Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
-  outline: none;
+  font-family: Helvetica, Arial, sans-serif;
 }
 #inputBar #input #inputInner #inputMessage #txtMessage:focus {
   border-color: #cc715c;
+  animation: fadeBorder 0.4s;
+  -webkit-animation: fadeBorder 0.4s;
 }
 #inputBar #input #inputInner #inputButton {
   float: right;
@@ -167,14 +197,14 @@ h2 {
   display: block;
   float: left;
   width: 60px;
-  color: #fff;
   height: 52px;
-  cursor: pointer;
-  background: #cc715c;
   margin: 0;
+  background: #cc715c;
   border-radius: 0 3px 3px 0;
   border: none;
   font-family: 'Roboto';
+  color: #fff;
+  cursor: pointer;
 }
 #inputBar #alias {
   width: 200px;
@@ -200,7 +230,6 @@ h2 {
   float: left;
   width: 20px;
   height: 20px;
-  cursor: pointer;
   margin: 0;
   margin-left: 5px;
   border-radius: 3px;
@@ -209,6 +238,7 @@ h2 {
   background-repeat: no-repeat;
   background-position: center;
   border: none;
+  cursor: pointer;
 }
 #inputBar #alias #aliasInner #editUserName #txtUserName {
   display: block;
@@ -216,34 +246,76 @@ h2 {
   height: 18px;
   width: 133px;
   padding: 4px;
+  background: #fff;
+  outline: none;
   border-radius: 3px 0 0 3px;
   border: 1px solid #ddd;
   border-right: none;
-  background: #fff;
+  box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.2);
   -webkit-box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.2);
-  outline: none;
 }
 #inputBar #alias #aliasInner #editUserName #txtUserName:focus {
   border-color: #cc715c;
+  animation: fadeBorder 0.4s;
+  -webkit-animation: fadeBorder 0.4s;
 }
 #inputBar #alias #aliasInner #editUserName #btnSaveUserName {
-  font-size: 11px;
   display: block;
   float: left;
   width: 35px;
-  padding: 5px;
-  color: #fff;
   height: 28px;
-  cursor: pointer;
-  background: #cc715c;
   margin: 0;
+  padding: 5px;
+  background: #cc715c;
   border-radius: 0 3px 3px 0;
   border: none;
   font-family: 'Roboto';
+  font-size: 11px;
+  color: #fff;
+  cursor: pointer;
 }
-#inputBar #alias #aliasInner #editUserName #lblUserNameError {
-  display: none;
-  float: left;
-  color: #f00;
-  margin-top: 10px;
+@-moz-keyframes fadeBorder {
+  0% {
+    border-color: #ddd;
+  }
+
+  100% {
+    border-color: #cc715c;
+  }
+}
+@-webkit-keyframes fadeBorder {
+  0% {
+    border-color: #ddd;
+  }
+
+  100% {
+    border-color: #cc715c;
+  }
+}
+@-o-keyframes fadeBorder {
+  0% {
+    border-color: #ddd;
+  }
+
+  100% {
+    border-color: #cc715c;
+  }
+}
+@-ms-keyframes fadeBorder {
+  0% {
+    border-color: #ddd;
+  }
+
+  100% {
+    border-color: #cc715c;
+  }
+}
+@keyframes fadeBorder {
+  0% {
+    border-color: #ddd;
+  }
+
+  100% {
+    border-color: #cc715c;
+  }
 }

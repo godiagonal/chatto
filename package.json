@@ -1,6 +1,6 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "chatto",
+  "version": "0.0.1-15",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -8,6 +8,12 @@
   "dependencies": {
     "express": "3.3.5",
     "jade": "*",
+    "socket.io": "*",
+    "moment": "*",
     "stylus": "*"
+  },
+  "subdomain": "chatto",
+  "engines": {
+    "node": "0.10.x"
   }
 }
